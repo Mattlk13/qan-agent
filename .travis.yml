@@ -11,6 +11,11 @@ go:
 services:
   - mysql
 
+addons:
+  apt:
+    packages:
+    - percona-toolkit
+
 install:
  - go get -u github.com/kardianos/govendor
  - govendor sync
