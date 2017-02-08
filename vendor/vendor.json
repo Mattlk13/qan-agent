@@ -111,8 +111,8 @@
 			"revisionTime": "2016-04-04T09:36:48Z"
 		},
 		{
-			"checksumSHA1": "NXIV42Kbia/VxioJzKQjDkmZrD0=",
-			"path": "github.com/stretchr/testify",
+			"checksumSHA1": "8rxOh1Vlti1bzoIy6mH5eL0RYsI=",
+			"path": "github.com/stretchr/testify/assert",
 			"revision": "4d4bfba8f1d1027c4fdbe371823030df51419987",
 			"revisionTime": "2017-01-30T11:31:45Z"
 		},
