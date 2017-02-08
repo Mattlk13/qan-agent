@@ -21,5 +21,6 @@ install:
   - "govendor sync"
 
 script:
+  - pt-summary --version
   - test/runner.sh
 
