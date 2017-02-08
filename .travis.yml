@@ -1,24 +1,28 @@
 language: go
 
-go: 
- - 1.3.x
- - 1.4.x
- - 1.5.x
- - 1.6.x
- - 1.7.x
- - 1.8.x
+go:
+  - 1.3.x
+  - 1.4.x
+  - 1.5.x
+  - 1.6.x
+  - 1.7.x
+  - 1.8.x
 
 services:
   - mysql
 
+env:
+  - "PCT_TEST_MYSQL_DSN=\"root:@tcp(localhost:3306)/?parseTime=true\""
+
 addons:
   apt:
     packages:
-    - percona-toolkit
+      - percona-toolkit
 
 install:
- - go get -u github.com/kardianos/govendor
- - govendor sync
+  - "go get -u github.com/kardianos/govendor"
+  - "govendor sync"
 
 script:
- - test/runner.sh
+  - test/runner.sh
+
