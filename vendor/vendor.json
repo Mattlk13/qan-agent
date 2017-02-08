@@ -3,6 +3,12 @@
 	"ignore": "",
 	"package": [
 		{
+			"checksumSHA1": "WRu+mhZ2PfQu27qRr69HVGjtN4Q=",
+			"path": "github.com/davecgh/go-spew/spew",
+			"revision": "346938d642f2ec3594ed81d874461961cd0faa76",
+			"revisionTime": "2016-10-29T20:57:26Z"
+		},
+		{
 			"checksumSHA1": "3xVanMXn/lblhNfZYORorpd8N6E=",
 			"path": "github.com/go-sql-driver/mysql",
 			"revision": "0b58b37b664c21f3010e836f1b931e1d0b0b0685",
