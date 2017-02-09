@@ -238,7 +238,7 @@ func (s *TestSuite) TestExplainWithDb(t *C) {
 
 	expectedExplainResult := &proto.ExplainResult{
 		Classic: []*proto.ExplainRow{
-			&proto.ExplainRow{
+			{
 				Id: proto.NullInt64{
 					NullInt64: sql.NullInt64{
 						Int64: 1,
