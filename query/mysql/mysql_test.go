@@ -118,7 +118,7 @@ func (s *TestSuite) TestExplainWithoutDb(t *C) {
 
 	expectedExplainResult := &proto.ExplainResult{
 		Classic: []*proto.ExplainRow{
-			&proto.ExplainRow{
+			{
 				Id: proto.NullInt64{
 					NullInt64: sql.NullInt64{
 						Int64: 1,
@@ -186,6 +186,15 @@ func (s *TestSuite) TestExplainWithoutDb(t *C) {
 
 	gotExplainResult, err := s.e.Explain(db, query, true)
 	t.Check(err, IsNil)
+	// Check the json first but only if supported...
+	jsonSupported, err := s.conn.AtLeastVersion("5.6.5")
+	if jsonSupported {
+		assert.JSONEq(t, string(expectedJSON), gotExplainResult.JSON)
+	}
+	// ... check the rest after, without json
+	// you can't compare json as string because properties in json are in undefined order
+	expectedExplainResult.JSON = ""
+	gotExplainResult.JSON = ""
 	t.Check(gotExplainResult, DeepEquals, expectedExplainResult)
 }
 
@@ -306,8 +315,11 @@ func (s *TestSuite) TestExplainWithDb(t *C) {
 
 	gotExplainResult, err := s.e.Explain(db, query, true)
 	assert.Nil(t, err)
-	// Check the json first...
-	assert.JSONEq(t, string(expectedJSON), gotExplainResult.JSON)
+	// Check the json first but only if supported...
+	jsonSupported, err := s.conn.AtLeastVersion("5.6.5")
+	if jsonSupported {
+		assert.JSONEq(t, string(expectedJSON), gotExplainResult.JSON)
+	}
 	// ... check the rest after, without json
 	// you can't compare json as string because properties in json are in undefined order
 	expectedExplainResult.JSON = ""
