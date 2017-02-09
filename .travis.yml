@@ -24,6 +24,7 @@ install:
   - "govendor sync"
 
 script:
+  - mysql -e 'SELECT version();'
   - pt-summary --version
   - test/runner.sh
 
